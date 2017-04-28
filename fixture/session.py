@@ -31,7 +31,7 @@ class SessionHelper:
 
     def get_logged_user(self):
         wd = self.app.wd
-        return wd.find_element_by_link_text("administrator").text
+        return wd.find_element_by_link_text("administrator").text == ("+username+")
 
     def is_logged_in(self):
         wd = self.app.wd
