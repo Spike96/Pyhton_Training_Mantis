@@ -47,11 +47,16 @@ class ProjectHelper:
         wd.find_element_by_css_selector(".menu-icon.fa.fa-gears").click()
         wd.find_element_by_link_text("Manage Projects").click()
 
-    def get_group_list(self):
+    def get_project_list(self):
         wd = self.app.wd
         self.app.open_home_page()
+        list_proj = []
         wd.find_element_by_css_selector(".menu-icon.fa.fa-gears").click()
         wd.find_element_by_link_text("Manage Projects").click()
+        for element in wd.find_elements_by_css_selector("i.fa.fa-check.fa-lg"):
+            i = element.find_element_by_css_selector("i.fa.fa-check.fa-lg")
+            list_proj.append(Project(i=i))
+        return list_proj
 
     def count(self):
         wd = self.app.wd
