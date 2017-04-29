@@ -53,7 +53,7 @@ class ProjectHelper:
         list_proj = []
         wd.find_element_by_css_selector(".menu-icon.fa.fa-gears").click()
         wd.find_element_by_link_text("Управление проектами").click()
-        for element in wd.find_elements_by_tag_name("tbody"):
+        for element in wd.find_elements_by_xpath("//tbody/tr/td/a"):
             # text = element.text
             text = element.find_element_by_xpath("//tr/td/a").text
             list_proj.append(Project(name=text))
