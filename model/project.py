@@ -1,7 +1,8 @@
 
 class Project:
 
-    def __init__(self, name=None, description=None, i=None):
+    def __init__(self, name=None, description=None):
         self.name = name
         self.description = description
-        self.i = i
+
+
