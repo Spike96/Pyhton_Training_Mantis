@@ -1,3 +1,5 @@
+from sys import maxsize
+
 
 class Project:
 
@@ -15,3 +17,9 @@ class Project:
 
     def key(self):
         return self.name
+
+    def id_or_max(self):
+        if self.id:
+            return int(self.id)
+        else:
+            return maxsize

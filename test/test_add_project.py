@@ -2,6 +2,8 @@
 from model.project import Project
 import random
 import string
+import re
+
 
 def random_string(prefix, maxlen):
     symbols = string.ascii_letters + string.digits + " "*5
@@ -15,8 +17,6 @@ def test_add_project_mantis(app):
     new_projects = app.project.get_project_list()
     old_projects.append(project)
     assert sorted(old_projects, key=Project.key) == sorted(new_projects, key=Project.key)
-
-
 
 
 '''def test_add_project(app):
