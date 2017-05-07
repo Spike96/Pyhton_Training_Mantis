@@ -1,5 +1,5 @@
 from model.project import Project
-import re
+import random
 
 class ProjectHelper:
 
@@ -39,13 +39,17 @@ class ProjectHelper:
         wd = self.app.wd
         # self.app.open_home_page()
         self.go_to_manage_proj_for_del()
-        # select project
-        # wd.find_element_by_link_text("new project").click()
-        wd.find_element_by_xpath('//a[@href="manage_proj_edit_page.php?project_id=' + str(id) + '"]').click()
-        # press and confirm removing
+        self.select_project()
         wd.find_element_by_xpath("//form[@id='project-delete-form']/fieldset/input[3]").click()
         wd.find_element_by_xpath("//input[4]").click()
         self.project_cache = None
+
+    def select_project(self):
+        wd = self.app.wd
+        element_list = wd.find_elements_by_css_selector("a[href^='manage_proj_edit_page.php?project_id']")
+        id = random.randrange(1, len(element_list))
+        element = element_list[id]
+        element.click()
 
     def go_to_manage_proj_for_del(self):
         wd = self.app.wd
