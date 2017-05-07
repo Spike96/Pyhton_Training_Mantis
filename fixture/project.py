@@ -47,7 +47,7 @@ class ProjectHelper:
     def select_project(self):
         wd = self.app.wd
         element_list = wd.find_elements_by_css_selector("a[href^='manage_proj_edit_page.php?project_id']")
-        id = random.randrange(1, len(element_list))
+        id = random.randrange(0, len(element_list))
         element = element_list[id]
         element.click()
 

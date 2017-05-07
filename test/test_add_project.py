@@ -29,8 +29,6 @@ def test_add_project_mantis(app):
     assert app.soap.soap_project_list(username, password, project_name)'''
 
 
-
-
 '''def test_add_project(app):
     old_projects = app.project.get_project_list()
     app.project.create()
