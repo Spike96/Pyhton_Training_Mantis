@@ -2,7 +2,7 @@
 from model.project import Project
 import random
 import string
-
+import re
 
 
 def random_string(prefix, maxlen):
@@ -11,22 +11,29 @@ def random_string(prefix, maxlen):
 
 
 def test_add_project_mantis(app):
-    old_projects = app.project.get_project_list()
+    username = "administrator"
+    password = "root"
+    old_projects = app.soap.soap_project_list(username, password)
     project = Project(name=random_string("name", 10), description=random_string("description", 20))
     app.project.create(project)
-    new_projects = app.project.get_project_list()
+    new_projects = app.soap.soap_project_list(username, password)
     old_projects.append(project)
     assert sorted(old_projects, key=Project.key) == sorted(new_projects, key=Project.key)
 
 
 
 
-'''def test_add_project(app):
-    username = "administrator"
-    password = "root"
-    project_name = "new project"
-    app.project.create()
-    assert app.soap.soap_project_list(username, password, project_name)'''
+
+
+
+'''def test_add_project_mantis(app):
+    old_projects = app.project.get_project_list()
+    project = Project(name=random_string("name", 10), description=random_string("description", 20))
+    app.project.create(project)
+    new_projects = app.project.get_project_list()
+    old_projects.append(project)
+    assert sorted(old_projects, key=Project.key) == sorted(new_projects, key=Project.key)'''
+
 
 
 '''def test_add_project(app):
